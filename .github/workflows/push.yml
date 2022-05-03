@@ -12,7 +12,7 @@ jobs:
       if: ${{ github.repository == 'WilloIzCitron/Genshindustry' }}
       run: |
         git clone --depth=1 --branch=master https://github.com/WilloIzCitron/GenshindustryBuilds ../GenshindustryBuilds
-        cd ../MindustryBuilds
+        cd ../GenshindustryBuilds
         BNUM=$(($GITHUB_RUN_NUMBER + 20000))
         git tag ${BNUM}
         git config --global user.name "Github Actions"
