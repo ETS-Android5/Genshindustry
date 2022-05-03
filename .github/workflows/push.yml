@@ -26,7 +26,7 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./gradlew
     - name: Update bundles
-      if: ${{ github.repository == 'WilloIzCitron/Genshindustry' }}
+      if: ${{ github.repository == 'WilloIzCitron/Mindustry' }}
       run: |
         ./gradlew updateBundles
 
