@@ -22,7 +22,7 @@ jobs:
         git clone --depth=1 --branch=master https://github.com/WilloIzCitron/Arc ../Arc
         cd ../Arc
         git tag ${RELEASE_VERSION}
-        git push https://WilloIzCitron:${{ secrets.API_TOKEN_GITHUB }}@github.com/WilloIzCitron/Arc ${RELEASE_VERSION};
+        git push https://WilloIzCitron:${{ secrets.GITHUB_TOKEN }}@github.com/WilloIzCitron/Arc ${RELEASE_VERSION};
         cd ../Mindustry
     - name: Create artifacts
       run: |
@@ -42,7 +42,7 @@ jobs:
         cd docs
         git add .
         git commit --allow-empty -m "Update ${RELEASE_VERSION:1}"
-        git push https://WilloIzCitron:${{ secrets.API_TOKEN_GITHUB }}@github.com/MindustryGame/docs
+        git push https://WilloIzCitron:${{ secrets.GITHUB_TOKEN }}@github.com/MindustryGame/docs
         cd ../Mindustry
     - name: Update F-Droid build string
       run: |
@@ -53,7 +53,7 @@ jobs:
         echo versionName=7-fdroid-${RELEASE_VERSION:1}$'\n'versionCode=${BNUM} > version_fdroid.txt
         git add .
         git commit -m "Updating to build ${RELEASE_VERSION:1}"
-        git push https://WilloIzCitron:${{ secrets.API_TOKEN_GITHUB }}@github.com/WilloIzCitron/MindustryBuilds
+        git push https://WilloIzCitron:${{ secrets.GITHUB_TOKEN }}@github.com/WilloIzCitron/MindustryBuilds
         cd ../Mindustry
     - name: Upload client artifacts
       uses: svenstaro/upload-release-action@v2
