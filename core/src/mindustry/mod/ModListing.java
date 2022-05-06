@@ -2,7 +2,7 @@ package mindustry.mod;
 
 /** Mod listing as a data class. */
 public class ModListing{
-    public String repo, name, author, lastUpdated, description, minGameVersion;
+    public String repo, name, author, lastUpdated, description, minGameVersion, branch;
     public boolean hasScripts, hasJava;
     public String[] contentTypes = {};
     public int stars;
@@ -18,6 +18,7 @@ public class ModListing{
         ", minGameVersion='" + minGameVersion + '\'' +
         ", hasScripts=" + hasScripts +
         ", hasJava=" + hasJava +
+        ", branch=" + branch +
         ", stars=" + stars +
         '}';
     }
