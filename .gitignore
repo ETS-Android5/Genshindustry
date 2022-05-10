@@ -164,5 +164,5 @@ Thumbs.db
 android/libs/
 
 # ignored due to frequent branch conflicts.
-core/assets/logicids.dat
-core/assets/icons/icons.properties
+#core/assets/logicids.dat
+#core/assets/icons/icons.properties
