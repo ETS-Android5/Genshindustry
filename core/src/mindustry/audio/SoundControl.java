@@ -17,7 +17,7 @@ import static mindustry.Vars.*;
 
 /** Controls playback of multiple audio tracks.*/
 public class SoundControl{
-    protected static final float finTime = 120f, foutTime = 120f, musicInterval = 3f * Time.toMinutes, musicChance = 0.6f, musicWaveChance = 0.46f;
+    public float finTime = 120f, foutTime = 120f, musicInterval = 3f * Time.toMinutes, musicChance = 0.6f, musicWaveChance = 0.46f;
 
     /** normal, ambient music, plays at any time */
     public Seq<Music> ambientMusic = Seq.with();
@@ -45,7 +45,7 @@ public class SoundControl{
 
         //only run music 10 seconds after a wave spawns
         Events.on(WaveEvent.class, e -> Time.run(Mathf.random(8f, 15f) * 60f, () -> {
-            boolean boss = state.rules.spawns.contains(group -> group.getSpawned(state.wave - 3) > 0 && group.effect == StatusEffects.boss);
+            boolean boss = state.rules.spawns.contains(group -> group.getSpawned(state.wave - 2) > 0 && group.effect == StatusEffects.boss);
 
             if(boss){
                 playOnce(bossMusic.random(lastRandomPlayed));
@@ -65,9 +65,9 @@ public class SoundControl{
     protected void reload(){
         current = null;
         fade = 0f;
-        ambientMusic = Seq.with(Musics.game1, Musics.game3, Musics.game6, Musics.game8, Musics.game9);
+        ambientMusic = Seq.with(Musics.game1, Musics.game3, Musics.game6, Musics.game8, Musics.game9, Musics.fine);
         darkMusic = Seq.with(Musics.game2, Musics.game5, Musics.game7, Musics.game4);
-        bossMusic = Seq.with(Musics.boss1, Musics.boss2, Musics.boss3);
+        bossMusic = Seq.with(Musics.boss1, Musics.boss2, Musics.boss3,);
 
         //setup UI bus for all sounds that are in the UI folder
         for(var sound : Core.assets.getAll(Sound.class, new Seq<>())){
