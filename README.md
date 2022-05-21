@@ -5,6 +5,8 @@
 
 Mindustry but Genshin Impact, this is fork from Anuken's Mindustry
 
+v7 version is here but under development
+
 _[Trello Board](https://trello.com/b/aE2tcUwF/mindustry-40-plans)_  
 _[Wiki](https://mindustrygame.github.io/wiki)_  
 _[Javadoc](https://mindustrygame.github.io/docs/)_ 
