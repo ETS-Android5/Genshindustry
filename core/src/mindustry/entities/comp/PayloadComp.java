@@ -40,7 +40,7 @@ abstract class PayloadComp implements Posc, Rotc, Hitboxc, Unitc{
             if(pay instanceof BuildPayload pb && pb.build.power != null){
                 if(payloadPower == null) payloadPower = new PowerGraph();
 
-                pb.build.team = team;
+                //pb.build.team = team;
                 pb.build.power.graph = null;
                 payloadPower.add(pb.build);
             }
@@ -51,11 +51,12 @@ abstract class PayloadComp implements Posc, Rotc, Hitboxc, Unitc{
         }
 
         for(Payload pay : payloads){
-            if(pay instanceof BuildPayload build){
-                build.build.team = team;
-            }
+            //apparently BasedUser doesn't want this and several plugins use it
+            //if(pay instanceof BuildPayload build){
+            //    build.build.team = team;
+            //}
             pay.set(x, y, rotation);
-            pay.update(true);
+            pay.update(self(), null);
         }
     }
 

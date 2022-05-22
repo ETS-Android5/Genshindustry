@@ -90,6 +90,8 @@ public class Block extends UnlockableContent implements Senseable{
     public boolean destructible;
     /** whether unloaders work on this block */
     public boolean unloadable = true;
+    /** if true, this block acts a duct and will connect to armored ducts from the side. */
+    public boolean isDuct = false;
     /** whether units can resupply by taking items from this block */
     public boolean allowResupply = false;
     /** whether this is solid */
@@ -406,7 +408,7 @@ public class Block extends UnlockableContent implements Senseable{
                 PowerNode.getNodeLinks(tile, this, player.team(), other -> {
                     PowerNode node = (PowerNode)other.block;
                     Draw.color(node.laserColor1, Renderer.laserOpacity * 0.5f);
-                    node.drawLaser(tile.team(), x * tilesize + offset, y * tilesize + offset, other.x, other.y, size, other.block.size);
+                    node.drawLaser(x * tilesize + offset, y * tilesize + offset, other.x, other.y, size, other.block.size);
 
                     Drawf.square(other.x, other.y, other.block.size * tilesize / 2f + 2f, Pal.place);
                 });
@@ -1248,9 +1250,7 @@ public class Block extends UnlockableContent implements Senseable{
                         }
                     }
 
-                    if(Core.settings.getBool("linear", true)){
-                        Pixmaps.bleed(out);
-                    }
+                    Drawf.checkBleed(out);
 
                     packer.add(PageType.main, name + "-team-" + team.name, out);
                 }
@@ -1267,12 +1267,11 @@ public class Block extends UnlockableContent implements Senseable{
         var gen = icons();
 
         if(outlineIcon){
-            PixmapRegion region = Core.atlas.getPixmap(gen[outlinedIcon >= 0 ? Math.min(outlinedIcon, gen.length - 1) : gen.length -1]);
+            AtlasRegion atlasRegion = (AtlasRegion)gen[outlinedIcon >= 0 ? Math.min(outlinedIcon, gen.length - 1) : gen.length -1];
+            PixmapRegion region = Core.atlas.getPixmap(atlasRegion);
             Pixmap out = last = Pixmaps.outline(region, outlineColor, outlineRadius);
-            if(Core.settings.getBool("linear", true)){
-                Pixmaps.bleed(out);
-            }
-            packer.add(PageType.main, name, out);
+            Drawf.checkBleed(out);
+            packer.add(PageType.main, atlasRegion.name, out);
         }
 
         var toOutline = new Seq<TextureRegion>();
@@ -1283,7 +1282,7 @@ public class Block extends UnlockableContent implements Senseable{
                 String regionName = atlas.name;
                 Pixmap outlined = Pixmaps.outline(Core.atlas.getPixmap(region), outlineColor, outlineRadius);
 
-                if(Core.settings.getBool("linear", true)) Pixmaps.bleed(outlined);
+                Drawf.checkBleed(outlined);
 
                 packer.add(PageType.main, regionName + "-outline", outlined);
             }

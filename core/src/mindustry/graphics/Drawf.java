@@ -1,5 +1,6 @@
 package mindustry.graphics;
 
+import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
@@ -17,6 +18,11 @@ import static mindustry.Vars.*;
 public class Drawf{
     private static final Vec2[] vecs = new Vec2[]{new Vec2(), new Vec2(), new Vec2(), new Vec2()};
     private static final FloatSeq points = new FloatSeq();
+
+    /** Bleeds a mod pixmap if linear filtering is enabled. */
+    public static void checkBleed(Pixmap pixmap){
+        if(Core.settings.getBool("linear", true)) Pixmaps.bleed(pixmap);
+    }
 
     //TODO offset unused
     public static void flame(float x, float y, int divisions, float rotation, float length, float width, float pan){
@@ -223,22 +229,27 @@ public class Drawf{
     }
 
     public static void light(float x, float y, float radius, Color color, float opacity){
+        if(renderer == null) return;
         renderer.lights.add(x, y, radius, color, opacity);
     }
 
     public static void light(Position pos, float radius, Color color, float opacity){
+        if(renderer == null) return;
        light(pos.getX(), pos.getY(), radius, color, opacity);
     }
 
     public static void light(float x, float y, TextureRegion region, Color color, float opacity){
+        if(renderer == null) return;
         renderer.lights.add(x, y, region, color, opacity);
     }
 
     public static void light(float x, float y, float x2, float y2){
+        if(renderer == null) return;
         renderer.lights.line(x, y, x2, y2, 30, Color.orange, 0.3f);
     }
 
     public static void light(float x, float y, float x2, float y2, float stroke, Color tint, float alpha){
+        if(renderer == null) return;
         renderer.lights.line(x, y, x2, y2, stroke, tint, alpha);
     }
 

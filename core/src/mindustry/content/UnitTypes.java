@@ -89,7 +89,7 @@ public class UnitTypes{
 
     //region neoplasm
 
-    public static @EntityDef({Unitc.class, Crawlc.class}) UnitType scuttler;
+    public static @EntityDef({Unitc.class, Crawlc.class}) UnitType latum;
 
     //endregion
 
@@ -684,7 +684,6 @@ public class UnitTypes{
             hitSize = 15f;
             rotateSpeed = 3f;
             health = 1000;
-            immunities = ObjectSet.with(StatusEffects.burning, StatusEffects.melting);
             legCount = 6;
             legLength = 13f;
             legForwardScl = 0.8f;
@@ -1054,7 +1053,6 @@ public class UnitTypes{
             lowAltitude = true;
             forceMultiTarget = true;
             armor = 5f;
-            itemCapacity = 0;
 
             targetFlags = new BlockFlag[]{BlockFlag.launchPad, BlockFlag.storage, BlockFlag.battery, null};
             engineOffset = 12f;
@@ -1541,7 +1539,7 @@ public class UnitTypes{
             trailLength = 20;
             waveTrailX = 5.5f;
             waveTrailY = -4f;
-            tailScl = 1.9f;
+            trailScl = 1.9f;
 
             weapons.add(new Weapon("mount-weapon"){{
                 reload = 10f;
@@ -1600,7 +1598,7 @@ public class UnitTypes{
             trailLength = 22;
             waveTrailX = 7f;
             waveTrailY = -9f;
-            tailScl = 1.5f;
+            trailScl = 1.5f;
 
             abilities.add(new ShieldRegenFieldAbility(20f, 40f, 60f * 4, 60f));
 
@@ -1697,7 +1695,7 @@ public class UnitTypes{
             trailLength = 50;
             waveTrailX = 18f;
             waveTrailY = -21f;
-            tailScl = 3f;
+            trailScl = 3f;
 
             weapons.add(new Weapon("sei-launcher"){{
 
@@ -1791,7 +1789,7 @@ public class UnitTypes{
             trailLength = 70;
             waveTrailX = 23f;
             waveTrailY = -32f;
-            tailScl = 3.5f;
+            trailScl = 3.5f;
 
             weapons.add(new Weapon("omura-cannon"){{
                 reload = 110f;
@@ -1835,7 +1833,7 @@ public class UnitTypes{
             rotateSpeed = 5f;
             trailLength = 20;
             waveTrailX = 5f;
-            tailScl = 1.3f;
+            trailScl = 1.3f;
             faceTarget = false;
             range = 100f;
             ammoType = new PowerAmmoType(900);
@@ -1926,7 +1924,7 @@ public class UnitTypes{
             trailLength = 22;
             waveTrailX = 5.5f;
             waveTrailY = -4f;
-            tailScl = 1.9f;
+            trailScl = 1.9f;
             ammoType = new ItemAmmoType(Items.coal);
 
             abilities.add(new StatusFieldAbility(StatusEffects.overclock, 60f * 6, 60f * 6f, 60f));
@@ -2003,7 +2001,7 @@ public class UnitTypes{
             trailLength = 23;
             waveTrailX = 9f;
             waveTrailY = -9f;
-            tailScl = 2f;
+            trailScl = 2f;
 
             buildSpeed = 2f;
 
@@ -2144,7 +2142,7 @@ public class UnitTypes{
             trailLength = 50;
             waveTrailX = 18f;
             waveTrailY = -17f;
-            tailScl = 3.2f;
+            trailScl = 3.2f;
 
             buildSpeed = 3f;
 
@@ -2185,7 +2183,7 @@ public class UnitTypes{
             trailLength = 70;
             waveTrailX = 23f;
             waveTrailY = -32f;
-            tailScl = 3.5f;
+            trailScl = 3.5f;
 
             buildSpeed = 3.5f;
 
@@ -2640,7 +2638,7 @@ public class UnitTypes{
             hitSize = 28f;
             treadPullOffset = 4;
             speed = 0.63f;
-            health = 9000;
+            health = 10000;
             armor = 20f;
             itemCapacity = 0;
             crushDamage = 13f / 5f;
@@ -2734,7 +2732,7 @@ public class UnitTypes{
             hitSize = 46f;
             treadPullOffset = 1;
             speed = 0.48f;
-            health = 20000;
+            health = 22000;
             armor = 25f;
             crushDamage = 25f / 5f;
             rotateSpeed = 0.8f;
@@ -3701,7 +3699,7 @@ public class UnitTypes{
             speed = 1.1f;
             rotateSpeed = 3.2f;
             accel = 0.1f;
-            health = 3000f;
+            health = 8000f;
             armor = 5f;
             hitSize = 36f;
             payloadCapacity = Mathf.sqr(3f) * tilePayload;
@@ -3770,7 +3768,7 @@ public class UnitTypes{
             speed = 1f;
             rotateSpeed = 2f;
             accel = 0.1f;
-            health = 10000f;
+            health = 12000f;
             armor = 7f;
             hitSize = 46f;
             payloadCapacity = Mathf.sqr(6f) * tilePayload;
@@ -3909,9 +3907,9 @@ public class UnitTypes{
         //region erekir - neoplasm
 
         if(false)
-            scuttler = new NeoplasmUnitType("scuttler"){{
+            latum = new NeoplasmUnitType("latum"){{
                 health = 20000;
-                armor = 17;
+                armor = 12;
                 hitSize = 48f;
                 omniMovement = false;
                 rotateSpeed = 1.7f;
@@ -3919,7 +3917,10 @@ public class UnitTypes{
                 drawCell = false;
                 segments = 4;
                 drawBody = false;
+                hidden = true;
                 crushDamage = 2f;
+                aiController = HugAI::new;
+                targetAir = false;
 
                 segmentScl = 4f;
                 segmentPhase = 5f;
@@ -3943,7 +3944,7 @@ public class UnitTypes{
             mineFloor = false;
             mineHardnessScaling = false;
             flying = true;
-            mineSpeed = 4f;
+            mineSpeed = 6f;
             mineTier = 3;
             buildSpeed = 1.2f;
             drag = 0.08f;
@@ -4007,7 +4008,7 @@ public class UnitTypes{
             mineFloor = false;
             mineHardnessScaling = false;
             flying = true;
-            mineSpeed = 4.5f;
+            mineSpeed = 8f;
             mineTier = 3;
             buildSpeed = 1.4f;
             drag = 0.08f;
@@ -4084,7 +4085,7 @@ public class UnitTypes{
             mineFloor = false;
             mineHardnessScaling = false;
             flying = true;
-            mineSpeed = 5f;
+            mineSpeed = 9f;
             mineTier = 3;
             buildSpeed = 1.5f;
             drag = 0.08f;
