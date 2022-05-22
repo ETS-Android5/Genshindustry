@@ -67,8 +67,8 @@ abstract class WaterMoveComp implements Posc, Velc, Hitboxc, Flyingc, Unitc{
         Color color = Tmp.c1.set(floor.mapColor.equals(Color.black) ? Blocks.water.mapColor : floor.mapColor).mul(1.5f);
         trailColor.lerp(color, Mathf.clamp(Time.delta * 0.04f));
 
-        tleft.draw(trailColor, type.tailScl);
-        tright.draw(trailColor, type.tailScl);
+        tleft.draw(trailColor, type.trailScl);
+        tright.draw(trailColor, type.trailScl);
 
         Draw.z(z);
     }
@@ -96,4 +96,3 @@ abstract class WaterMoveComp implements Posc, Velc, Hitboxc, Flyingc, Unitc{
         return tile != null && tile.floor().isLiquid;
     }
 }
-
