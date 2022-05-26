@@ -29,7 +29,7 @@ import java.io.*;
 import static mindustry.Vars.*;
 
 public class DesktopLauncher extends ClientLauncher{
-    public final static long discordID = 610508934456934412L;
+    public final static long discordID = 979213401190441002L;
     boolean useDiscord = !OS.hasProp("nodiscord"), loadError = false;
     Throwable steamError;
 
@@ -325,6 +325,7 @@ public class DesktopLauncher extends ClientLauncher{
             }
 
             presence.largeImageKey = "logo";
+            presence.largeImageText = "Genshindustry " + Version.buildString();
 
             try{
                 DiscordRPC.send(presence);
@@ -359,6 +360,6 @@ public class DesktopLauncher extends ClientLauncher{
     }
 
     private static void message(String message){
-        SDL.SDL_ShowSimpleMessageBox(SDL.SDL_MESSAGEBOX_ERROR, "oh no", message);
+        SDL.SDL_ShowSimpleMessageBox(SDL.SDL_MESSAGEBOX_ERROR, "ehe te nandayo", message);
     }
 }
