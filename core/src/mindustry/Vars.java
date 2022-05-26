@@ -471,6 +471,14 @@ public class Vars implements Loadable{
             if(locale.toString().equals("router")){
                 bundle.debug("router");
             }
+
+            if(locale.toString().equals("paimon")){
+                bundle.debug("paimon");
+            }
+
+            if(locale.toString().equals("siuuu")){
+                bundle.debug("siuuu");
+            }
         }
     }
 }
