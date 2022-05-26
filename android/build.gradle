@@ -54,7 +54,7 @@ android{
         Integer vcode = props['androidBuildCode']?.toInteger() ?: 1
         def versionNameResult = "$versionNumber-$versionType-${getBuildVersion().replace(" ", "-")}"
 
-        applicationId "io.anuke.mindustry"
+        applicationId "com.willoizcitron.genshindustry"
         minSdkVersion 14
         targetSdkVersion 30
         
@@ -138,7 +138,7 @@ task copyAndroidNatives(){
 }
 
 task run(type: Exec){
-    commandLine "${findSdkDir()}/platform-tools/adb", 'shell', 'am', 'start', '-n', 'io.anuke.mindustry/mindustry.android.AndroidLauncher'
+    commandLine "${findSdkDir()}/platform-tools/adb", 'shell', 'am', 'start', '-n', 'com.willoizcitron.genshindustry/mindustry.android.AndroidLauncher'
 }
 
 if(!project.ext.hasSprites()){
