@@ -276,6 +276,7 @@ public class SettingsMenuDialog extends BaseDialog{
         if(!mobile || Core.settings.getBool("keyboard")){
             menu.button("@settings.controls", Icon.move, style, isize, ui.controls::show).marginLeft(marg).row();
         }
+        menu.button("@settings.systeminfo", Icon.info, style, isize, ui.systeminfo::show).marginLeft(marg).row();
 
         menu.button("@settings.data", Icon.save, style, isize, () -> dataDialog.show()).marginLeft(marg).row();
 

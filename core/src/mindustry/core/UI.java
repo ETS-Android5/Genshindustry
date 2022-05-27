@@ -59,6 +59,7 @@ public class UI implements ApplicationListener, Loadable{
     public PausedDialog paused;
     public SettingsMenuDialog settings;
     public KeybindDialog controls;
+    public SysteminfoDialog systeminfo;
     public MapEditorDialog editor;
     public LanguageDialog language;
     public BansDialog bans;
@@ -177,6 +178,7 @@ public class UI implements ApplicationListener, Loadable{
         picker = new ColorPicker();
         editor = new MapEditorDialog();
         controls = new KeybindDialog();
+        systeminfo = new SysteminfoDialog();
         restart = new GameOverDialog();
         join = new JoinDialog();
         discord = new DiscordDialog();
