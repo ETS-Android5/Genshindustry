@@ -37,9 +37,9 @@ jobs:
         fi
     - name: Update JITpack repo
       run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
         cd ../
+        git config --global user.email "cli@github.com"
+        git config --global user.name "Github Actions"
         cp -r ./Genshindustry ./GenshindustryJitpack
         cd GenshindustryJitpack
         git clone --depth 1 https://github.com/WilloIzCitron/GenshindustryJitpack.git
