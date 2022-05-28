@@ -30,7 +30,7 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
     - name: Update bundles
-      if: ${{ github.repository == 'WilloIzcitron/Genshindustry' }}
+      if: ${{ github.repository == 'Anuken/Mindustry' }}
       run: |
         ./gradlew updateBundles
 
