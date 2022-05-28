@@ -8,6 +8,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
     - name: Trigger BE build
       if: ${{ github.repository == 'Anuken/Mindustry' }}
       run: |
@@ -36,17 +38,17 @@ jobs:
     - name: Update JITpack repo
       run: |
         cd ../
-        cp -r ./Mindustry ./MindustryJitpack
-        cd MindustryJitpack
-        git clone --depth 1 https://github.com/Anuken/MindustryJitpack.git
+        cp -r ./Genshindustry ./GenshindustryJitpack
+        cd GenshindustryJitpack
+        git clone --depth 1 https://github.com/WilloIzCitron/GenshindustryJitpack.git
         rm -rf .git
-        cp -r ./MindustryJitpack/.git ./.git
-        rm -rf MindustryJitpack
+        cp -r ./GenshindustryJitpack/.git ./.git
+        rm -rf GenshindustryJitpack
         rm -rf .github
         rm README.md
         git add .
         git commit --allow-empty -m "${GITHUB_SHA}"
-        git push https://Anuken:${{ secrets.API_TOKEN_GITHUB }}@github.com/Anuken/MindustryJitpack
-        cd ../Mindustry
+        git push https://WilloIzCitron:${{ secrets.API_TOKEN_GITHUB }}@github.com/WilloIzCitron/GenshindustryJitpack
+        cd ../Genshindustry
     - name: Run unit tests
       run: ./gradlew clean cleanTest test --stacktrace

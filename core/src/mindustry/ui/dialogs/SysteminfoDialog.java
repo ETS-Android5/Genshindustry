@@ -22,6 +22,7 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
 import static arc.Core.bundle;
+import static mindustry.Vars.android;
 import static mindustry.Vars.ui;
 
 public class SysteminfoDialog extends Dialog{
@@ -37,7 +38,7 @@ public class SysteminfoDialog extends Dialog{
 
 
     //detects what os and architecture it is
-    private String osget = System.getProperty("os.name") + " v" + System.getProperty("os.version") + " " + System.getProperty("os.arch");
+    private final String osget = System.getProperty("os.name") + " v" + System.getProperty("os.version") + " " + System.getProperty("os.arch");
     //ram usage
     private long ram = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     //total ram
@@ -45,6 +46,8 @@ public class SysteminfoDialog extends Dialog{
 
     JavaCompiler c = ToolProvider.getSystemJavaCompiler();
     private String javaType = "JDK";
+
+
 
 
 
@@ -77,13 +80,14 @@ public class SysteminfoDialog extends Dialog{
                 p.table(info -> {
                     //os
                     info.add(bundle.get("os", "OS:\n")+ osget).left();
-                    //cpu name with oshi
                     //ram usage with percentage and progressbar
                     info.row();
                     info.add("RAM:\nTotal:" +humanReadableByteCountSI(totalram)+ "\nUsage:" +humanReadableByteCountSI(ram)).left();
                     info.row();
                     //java vendor and version
-                    info.add(bundle.get("java", "Java:\n")+ System.getProperty("java.vendor") + " " +javaType+ " " + System.getProperty("java.runtime.version")).left();
+                    if(!android) {
+                        info.add(bundle.get("java", "Java:\n") + System.getProperty("java.vendor") + " " + javaType + " " + System.getProperty("java.runtime.version")).left();
+                    }
                 });
 
             });
