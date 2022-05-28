@@ -14,6 +14,9 @@ import mindustry.graphics.*;
 import mindustry.ui.*;
 
 import com.sun.management.*;
+
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.lang.management.*;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
@@ -33,13 +36,16 @@ public class SysteminfoDialog extends Dialog{
     private Seq<SettingsMenuDialog.SettingsCategory> categories = new Seq<>();
 
 
-
     //detects what os and architecture it is
     private String osget = System.getProperty("os.name") + " v" + System.getProperty("os.version") + " " + System.getProperty("os.arch");
     //ram usage
     private long ram = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     //total ram
     private long totalram = Runtime.getRuntime().totalMemory();
+
+    JavaCompiler c = ToolProvider.getSystemJavaCompiler();
+    private String javaType = "JDK";
+
 
 
     public static String humanReadableByteCountSI(long bytes) {
@@ -59,6 +65,10 @@ public class SysteminfoDialog extends Dialog{
         Systeminfo = new BaseDialog(bundle.get("settings.systeminfo", "System Information"));
         Systeminfo.setFillParent(true);
 
+        if (c == null) {
+            javaType = "JRE";
+        }
+
         cont.table(t -> {
             t.margin(10f);
             t.pane(p -> {
@@ -67,13 +77,13 @@ public class SysteminfoDialog extends Dialog{
                 p.table(info -> {
                     //os
                     info.add(bundle.get("os", "OS:\n")+ osget).left();
+                    //cpu name with oshi
                     //ram usage with percentage and progressbar
                     info.row();
                     info.add("RAM:\nTotal:" +humanReadableByteCountSI(totalram)+ "\nUsage:" +humanReadableByteCountSI(ram)).left();
                     info.row();
                     //java vendor and version
-                    info.add(bundle.get("java", "Java:\n")+ System.getProperty("java.vendor") + " Java " + System.getProperty("java.version")).left();
-
+                    info.add(bundle.get("java", "Java:\n")+ System.getProperty("java.vendor") + " " +javaType+ " " + System.getProperty("java.runtime.version")).left();
                 });
 
             });
