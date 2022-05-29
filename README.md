@@ -1,6 +1,6 @@
 ![Logo](core/assets-raw/sprites/ui/logo.png)
 
-[![Build Status](https://github.com/Anuken/Mindustry/workflows/Tests/badge.svg?event=push)](https://github.com/Anuken/Mindustry/actions)
+[![Build Status](https://github.com/Willoizcitron/genshindustry/workflows/Tests/badge.svg?event=push)](https://github.com/WilloizCitron/Genshindustry/actions)
 [![Discord](https://img.shields.io/discord/391020510269669376.svg?logo=discord&logoColor=white&logoWidth=20&labelColor=7289DA&label=Discord&color=17cf48)](https://discord.gg/mindustry)  
 
 Mindustry but Genshin Impact, this is fork from Anuken's Mindustry
@@ -22,13 +22,13 @@ Bleeding-edge builds are generated automatically for every commit. You can see t
 If you'd rather compile on your own, follow these instructions.
 First, make sure you have [JDK 16-17](https://adoptium.net/archive.html?variant=openjdk17&jvmVariant=hotspot) installed. **Other JDK versions will not work.** Open a terminal in the Mindustry directory and run the following commands:
 
-### Windows (Command Prompt)
+### Windows
 
-_Running:_ `gradlew desktop:run`  
-_Building:_ `gradlew desktop:dist`  
-_Sprite Packing:_ `gradlew tools:pack`
+_Running:_ `gradlew desktop:run` or `.\gradlew desktop:run`  
+_Building:_ `gradlew desktop:dist` or `.\gradlew desktop:dist`  
+_Sprite Packing:_ `gradlew tools:pack` or `.\gradlew tools:pack`
 
-### Linux/Mac OS/Windows (Powershell)
+### Linux/Mac OS
 
 _Running:_ `./gradlew desktop:run`  
 _Building:_ `./gradlew desktop:dist`  
