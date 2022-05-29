@@ -22,13 +22,13 @@ Bleeding-edge builds are generated automatically for every commit. You can see t
 If you'd rather compile on your own, follow these instructions.
 First, make sure you have [JDK 16-17](https://adoptium.net/archive.html?variant=openjdk17&jvmVariant=hotspot) installed. **Other JDK versions will not work.** Open a terminal in the Mindustry directory and run the following commands:
 
-### Windows
+### Windows (Command Prompt)
 
 _Running:_ `gradlew desktop:run`  
 _Building:_ `gradlew desktop:dist`  
 _Sprite Packing:_ `gradlew tools:pack`
 
-### Linux/Mac OS
+### Linux/Mac OS/Windows (Powershell)
 
 _Running:_ `./gradlew desktop:run`  
 _Building:_ `./gradlew desktop:dist`  
